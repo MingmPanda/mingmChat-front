@@ -6,11 +6,103 @@
     <title></title>
     <script src="js/mui.min.js"></script>
     <link href="css/mui.min.css" rel="stylesheet"/>
+	<link href="fontico/iconfont.css" rel="stylesheet" />
+	<link rel="stylesheet" href="css/header.css" />
     <script type="text/javascript" charset="utf-8">
       	mui.init();
+		
+		mui.plusReady(function(){
+      		plus.navigator.setStatusBarStyle("light");
+      		plus.navigator.setStatusBarBackground("#C9394A");
+      	});
     </script>
 </head>
 <body>
+	<header class="mui-bar mui-bar-nav title">
+		<h1 class="mui-title title-color"><b>明信</b></h1>
+	</header>
 	
+	<nav class="mui-bar mui-bar-tab">
+		<a class="mui-tab-item mui-active" tabindex="0">
+			<span class="mui-icon iconfont icon-sunset1187953easyiconnet"></span>
+			<span class="mui-tab-label">明信</span>
+		</a>
+		<a class="mui-tab-item" tabindex="1">
+			<span class="mui-icon iconfont icon-tongxunlu"></span>
+			<span class="mui-tab-label">通讯录</span>
+		</a>
+		<a class="mui-tab-item" tabindex="2">
+			<span class="mui-icon iconfont icon-zhinanzhen1"></span>
+			<span class="mui-tab-label">发现</span>
+		</a>
+		<a class="mui-tab-item" tabindex="3">
+			<span class="mui-icon iconfont icon-wodered"></span>
+			<span class="mui-tab-label">我</span>
+		</a>
+	</nav>
+	
+	<script type="text/javascript" charset="utf-8">
+		
+		var mingmChatArray = [
+			{
+				pageId: "mingm-chatlist.html",
+				pageUrl: "mingm-chatlist.html"
+			},
+			{
+				pageId: "mingm-contact.html",
+				pageUrl: "mingm-contact.html"
+			},
+			{
+				pageId: "mingm-discover.html",
+				pageUrl: "mingm-discover.html"
+			},
+			{
+				pageId: "mingm-me.html",
+				pageUrl: "mingm-me.html"
+			}
+		];
+		
+		var mingmStyle = {
+			top: "44px",
+			bottom: "50px"
+		}
+		
+		mui.plusReady(function(){
+			
+			// 获取当前的webview对象
+			var indexWebView = plus.webview.currentWebview();
+			
+			// 向当前的主页webview追加子页的4张webview对象
+			for (var i = 0 ; i < mingmChatArray.length ; i ++) {
+				var mingmPage = plus.webview.create(mingmChatArray[i].pageUrl,
+									mingmChatArray[i].pageId,
+								    mingmStyle);
+				
+				// 隐藏webview窗口
+				mingmPage.hide();
+				// 追加每一个子页面到当前主页面
+				indexWebView.append(mingmPage);
+			}
+			plus.webview.show(mingmChatArray[0].pageId);
+			
+			// 批量绑定tap事件，展示不同的页面
+			mui(".mui-bar-tab").on("tap", "a", function(){
+				var tabindex = this.getAttribute("tabindex");
+				
+				// 显示点击的tab选项所对应的页面
+				plus.webview.show(mingmChatArray[tabindex].pageId, "fade-in", 200);
+				
+				//隐藏其他的不需要的页面
+				for (var i = 0; i < mingmChatArray.length; i ++) {
+					if (i != tabindex) {
+						plus.webview.hide(mingmChatArray[i].pageId, "fade-out", 200);
+					}
+				}
+				
+				// 延时加载
+//				setTimeout("initData()", 1000);
+			})
+		});
+	</script>
 </body>
 </html>

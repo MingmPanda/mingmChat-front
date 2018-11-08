@@ -125,5 +125,42 @@
 				}
 			}
 		}
+	},
+	"dependencies": {
+		"pages": {
+			"index.html": {
+				"resources": [
+					"mingm-chatlist.html"
+				],
+				"refer": [
+					"mingm-me.html",
+					"mingm-contact.html",
+					"mingm-discover.html"
+				],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"fontico/demo.css",
+				"fontico/demo_unicode.html",
+				"fontico/iconfont.ttf",
+				"fontico/iconfont.eot",
+				"fonts/mui.ttf",
+				"fontico/iconfont.css",
+				"css/mui.css",
+				"css/header.css",
+				"fontico/demo_fontclass.html",
+				"js/mui.min.js",
+				"fontico/iconfont.js",
+				"fontico/iconfont.woff",
+				"css/mui.min.css",
+				"mingmChat-front.iml",
+				"js/mui.js",
+				"fontico/iconfont.svg",
+				"fontico/demo_symbol.html",
+				"README.md"
+			]
+		}
 	}
 }
