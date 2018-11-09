@@ -146,6 +146,20 @@
 					"index.html"
 				],
 				"priority": 0
+			},
+			"mingm-me.html": {
+				"resources": [],
+				"refer": [
+					"myface.html"
+				],
+				"priority": 0
+			},
+			"myface.html": {
+				"resources": [],
+				"refer": [
+					"plugin/v3.1.6/myface-uploader.html"
+				],
+				"priority": 0
 			}
 		},
 		"idle": {

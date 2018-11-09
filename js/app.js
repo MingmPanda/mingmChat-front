@@ -6,6 +6,11 @@ window.app = {
 	serverUrl: 'http://192.168.65.140:8080',
 	
 	/**
+	 * 图片服务器的url地址
+	 */
+	imgServerUrl: '',
+	
+	/**
 	 * 判断字符串是否为空
 	 * @param {Object} str
 	 * true：不为空

@@ -16,5 +16,16 @@
       "index.html"
     ],
     "resources": []
+  },
+  "mingm-me.html": {
+    "refer": [
+      "myface.html"
+    ],
+    "resources": []
+  },
+  "myface.html": {
+    "refer": [
+      "plugin/v3.1.6/myface-uploader.html"
+    ]
   }
 }
