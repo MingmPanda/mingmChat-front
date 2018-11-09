@@ -1,13 +1,20 @@
 {
-	"index.html": {
-		"resources": [
-			"mingm-chatlist.html"
-		],
-		"refer": [
-			"mingm-me.html",
-			"mingm-contact.html",
-			"mingm-discover.html",
-			"mingm-chatlist.html"
-		]
-	}
+  "index.html": {
+    "resources": [
+      "mingm-chatlist.html"
+    ],
+    "refer": [
+      "mingm-me.html",
+      "mingm-contact.html",
+      "mingm-discover.html",
+      "mingm-chatlist.html"
+    ]
+  },
+  "login.html": {
+    "refer": [
+      "login.html",
+      "index.html"
+    ],
+    "resources": []
+  }
 }
