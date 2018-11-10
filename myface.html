@@ -46,26 +46,24 @@
 			
 			mui.plusReady(function() {
 				
-				var user = app.getUserGlobalInfo();
-				var img_my_face = document.getElementById("img_myface");
-
-				if(user != null) {
-					var faceImage = user.faceImage;
-					if(app.isNotNull(faceImage)) {
-						img_my_face.src = app.imgServerUrl + faceImage;
-					}
-				}
+				refreshFace();
 				
+				// 添加自定义事件，刷新头像
+				window.addEventListener("refresh", function(){
+					refreshFace();
+				});
+
 				// 获取手机端可见屏幕的宽度
 				var imgWidth = document.body.clientWidth;
 				img_myface.width = imgWidth;
 				img_myface.height = imgWidth;
-				
+
 				// 绑定选择菜单
 				var openMenu = document.getElementById("openMenu");
 				openMenu.addEventListener("tap", function() {
 					mui("#sheet-myface").popover("toggle");
 				});
+				
 				
 				// 绑定选择照片的菜单按钮
 				var link_choosePhoto = document.getElementById("link_choosePhoto");
@@ -83,6 +81,18 @@
 					alert("保存照片");
 				});
 			});
+			
+			function refreshFace() {
+				var user = app.getUserGlobalInfo();
+				var img_my_face = document.getElementById("img_myface");
+
+				if(user != null) {
+					var faceImage = user.faceImageBig;
+					if(app.isNotNull(faceImage)) {
+						img_my_face.src = app.imgServerUrl + faceImage;
+					}
+				}
+			}
 		</script>
 	</body>
 

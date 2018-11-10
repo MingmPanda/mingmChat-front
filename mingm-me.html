@@ -90,6 +90,11 @@
 				link_myface.addEventListener("tap", function() {
 					mui.openWindow("myface.html", "myface.html");
 				});
+				
+				// 添加自定义事件，刷新头像
+				window.addEventListener("refresh", function(){
+					refreshUserInfo();
+				});
 			});
 			
 			function refreshUserInfo() {
