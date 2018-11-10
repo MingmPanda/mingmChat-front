@@ -150,7 +150,10 @@
 			"mingm-me.html": {
 				"resources": [],
 				"refer": [
-					"myface.html"
+					"myface.html",
+					"mynickname.html",
+					"login.html",
+					"myQRCode.html"
 				],
 				"priority": 0
 			},

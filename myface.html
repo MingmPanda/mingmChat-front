@@ -78,7 +78,34 @@
 				// 绑定保存照片的菜单按钮
 				var link_savePhoto = document.getElementById("link_savePhoto");
 				link_savePhoto.addEventListener("tap", function() {
-					alert("保存照片");
+					plus.nativeUI.showWaiting("下载中...");
+					
+					var user = app.getUserGlobalInfo();
+					var faceImage = user.faceImageBig;
+					
+					var dtast = plus.downloader.createDownload(
+						app.imgServerUrl + faceImage,
+						{},
+						function(downloadFile, status) {
+							plus.nativeUI.closeWaiting();
+							
+							if (status == 200) {
+								var tempFile = downloadFile.filename;
+								
+								// 通过相册api保存照片到本地相册
+								plus.gallery.save(tempFile, function() {
+									app.showToast("保存照片成功！", "success");
+								})
+								
+							} else {
+								app.showToast("下载错误...", "error");
+								console.log("下载错误...");
+							}
+						}
+					);
+					
+					dtast.start();	// 启动下载任务
+					
 				});
 			});
 			

@@ -48,5 +48,12 @@ window.app = {
 	getUserGlobalInfo: function() {
 		var userInfoStr = plus.storage.getItem("userInfo");
 		return JSON.parse(userInfoStr);
+	},
+	
+	/**
+	 * 登出后，移除用户全局对象
+	 */
+	userLogout: function() {
+		plus.storage.removeItem("userInfo");
 	}
 }

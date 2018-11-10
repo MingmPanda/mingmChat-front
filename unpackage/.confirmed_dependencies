@@ -19,13 +19,17 @@
   },
   "mingm-me.html": {
     "refer": [
-      "myface.html"
+      "myface.html",
+      "mynickname.html",
+      "login.html",
+      "myQRCode.html"
     ],
     "resources": []
   },
   "myface.html": {
     "refer": [
       "plugin/v3.1.6/myface-uploader.html"
-    ]
+    ],
+    "resources": []
   }
 }
