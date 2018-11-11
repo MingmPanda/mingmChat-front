@@ -22,7 +22,8 @@
       "myface.html",
       "mynickname.html",
       "login.html",
-      "myQRCode.html"
+      "myQRCode.html",
+      "myusername.html"
     ],
     "resources": []
   },

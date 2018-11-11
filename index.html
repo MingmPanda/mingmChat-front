@@ -42,6 +42,8 @@
 	</nav>
 	
 	<script type="text/javascript" charset="utf-8">
+	
+		mui.init()
 		
 		var mingmChatArray = [
 			{
@@ -105,9 +107,17 @@
 				}
 				
 				// 延时加载
-//				setTimeout("initData()", 1000);
+				setTimeout("initData()", 1000);
 			})
 		});
+		
+		function initData() {
+			var mingm_chatlist = plus.webview.getWebviewById("mingm-chatlist.html");
+			mui.fire(mingm_chatlist, "refresh");
+			
+			var mingm_me = plus.webview.getWebviewById("mingm-me.html");
+			mui.fire(mingm_me, "refresh");
+		}
 	</script>
 </body>
 </html>
