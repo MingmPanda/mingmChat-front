@@ -105,12 +105,13 @@
 						plus.webview.hide(mingmChatArray[i].pageId, "fade-out", 200);
 					}
 				}
-				
-				// 延时加载
-				setTimeout("initData()", 1000);
 			})
+			
+			// 延时加载
+			setTimeout("initData()", 1000);
 		});
 		
+		//预加载
 		function initData() {
 			var mingm_chatlist = plus.webview.getWebviewById("mingm-chatlist.html");
 			mui.fire(mingm_chatlist, "refresh");

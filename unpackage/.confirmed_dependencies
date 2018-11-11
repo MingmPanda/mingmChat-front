@@ -1,36 +1,52 @@
 {
-  "index.html": {
-    "resources": [
-      "mingm-chatlist.html"
-    ],
-    "refer": [
-      "mingm-me.html",
-      "mingm-contact.html",
-      "mingm-discover.html",
-      "mingm-chatlist.html"
-    ]
-  },
-  "login.html": {
-    "refer": [
-      "login.html",
-      "index.html"
-    ],
-    "resources": []
-  },
-  "mingm-me.html": {
-    "refer": [
-      "myface.html",
-      "mynickname.html",
-      "login.html",
-      "myQRCode.html",
-      "myusername.html"
-    ],
-    "resources": []
-  },
-  "myface.html": {
-    "refer": [
-      "plugin/v3.1.6/myface-uploader.html"
-    ],
-    "resources": []
-  }
+	"index.html": {
+		"resources": [
+			"mingm-chatlist.html"
+		],
+		"refer": [
+			"mingm-me.html",
+			"mingm-contact.html",
+			"mingm-discover.html",
+			"mingm-chatlist.html"
+		]
+	},
+	"login.html": {
+		"refer": [
+			"login.html",
+			"index.html"
+		],
+		"resources": []
+	},
+	"mingm-me.html": {
+		"refer": [
+			"myface.html",
+			"mynickname.html",
+			"login.html",
+			"myQRCode.html",
+			"myusername.html"
+		],
+		"resources": []
+	},
+	"myface.html": {
+		"refer": [
+			"plugin/v3.1.6/myface-uploader.html"
+		],
+		"resources": []
+	},
+	"mingm-discover.html": {
+		"refer": [
+			"searchFriends.html",
+			"scanme.html"
+		]
+	},
+	"searchFriends.html": {
+		"refer": [
+			"searchFriendsResult.html"
+		]
+	},
+	"scanme.html": {
+		"refer": [
+			"searchFriendsResult.html"
+		]
+	}
 }

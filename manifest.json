@@ -164,6 +164,28 @@
 					"plugin/v3.1.6/myface-uploader.html"
 				],
 				"priority": 0
+			},
+			"mingm-discover.html": {
+				"resources": [],
+				"refer": [
+					"searchFriends.html",
+					"scanme.html"
+				],
+				"priority": 0
+			},
+			"searchFriends.html": {
+				"resources": [],
+				"refer": [
+					"searchFriendsResult.html"
+				],
+				"priority": 0
+			},
+			"scanme.html": {
+				"resources": [],
+				"refer": [
+					"searchFriendsResult.html"
+				],
+				"priority": 0
 			}
 		},
 		"idle": {
