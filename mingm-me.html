@@ -84,6 +84,8 @@
 			
 			mui.plusReady(function(){
 				
+				refreshUserInfo();
+				
 				// 获得当前的webview，刷新当前用户信息
 				var meWebview = plus.webview.currentWebview();
 				meWebview.addEventListener("show", function() {
@@ -133,7 +135,7 @@
 			
 			function refreshUserInfo() {
 				var user = app.getUserGlobalInfo();
-//				console.log("用户信息:" + JSON.stringify(user));
+				console.log("刷新用户信息:" + JSON.stringify(user));
 				
 				if (user != null) {
 					var faceImage = user.faceImage;

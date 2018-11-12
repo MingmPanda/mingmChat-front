@@ -109,7 +109,8 @@
 						}
 					}
 					
-					
+					console.log("缓存中的帐号信息:" + JSON.stringify(app.getUserGlobalInfo()));
+					console.log("缓存中的通讯录信息:" + JSON.stringify(app.getContactList()));
 					// 获取每台手机的唯一cid
 					var cid = plus.push.getClientInfo().clientid;
 					// 与后端联调
@@ -126,7 +127,6 @@
 						success:function(data){
 							//服务器返回响应，根据响应结果，分析是否登录成功；
 							console.log("登录的帐号信息:" + JSON.stringify(data));
-							
 							username.blur();
 							txt_password.blur();
 							
@@ -134,13 +134,9 @@
 								// 登录或者注册成功之后，保存全局用户对象到本地缓存
 								var userInfoJson = data.data;
 								app.setUserGlobalInfo(userInfoJson);
-								
+								app.reloadWebview();
 								// 页面跳转
 								mui.openWindow("index.html", "index.html");
-//     							mui.openWindow({
-//									url: "index.html",
-//									id:"index.html",
-//									createNew: true});
 							} else {
 								app.showToast(data.msg, "error");
 							}

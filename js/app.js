@@ -51,9 +51,47 @@ window.app = {
 	},
 	
 	/**
-	 * 登出后，移除用户全局对象
+	 * 登出后，移除用户全局对象和联系好友
 	 */
 	userLogout: function() {
 		plus.storage.removeItem("userInfo");
+		plus.storage.removeItem("contactList");
+
+	},
+	
+	/**
+	 * 用于登出再登录刷新
+	 */
+	reloadWebview: function() {
+		if(plus.webview.getWebviewById("mingm-chatlist.html")) {
+			plus.webview.getWebviewById("mingm-chatlist.html").reload();
+			plus.webview.getWebviewById("mingm-contact.html").reload();
+			plus.webview.getWebviewById("mingm-discover.html").reload();
+			plus.webview.getWebviewById("mingm-me.html").reload();
+		}
+
+		
+	},
+	
+	/**
+	 * 保存用户的联系人列表
+	 * @param {Object} contactList
+	 */
+	setContactList: function(contactList) {
+		var contactListStr = JSON.stringify(contactList);
+		plus.storage.setItem("contactList", contactListStr);
+	},
+	
+	/**
+	 * 获取本地缓存中的联系人列表
+	 */
+	getContactList: function() {
+		var contactListStr = plus.storage.getItem("contactList");
+		
+		if (!this.isNotNull(contactListStr)) {
+			return [];
+		}
+		
+		return JSON.parse(contactListStr);
 	}
 }
