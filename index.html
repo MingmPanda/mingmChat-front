@@ -19,7 +19,7 @@
 </head>
 <body>
 	<header class="mui-bar mui-bar-nav title">
-		<h1 class="mui-title title-color"><b>明信</b></h1>
+		<h1 class="mui-title title-color" id="mingm_title"><b>明信</b></h1>
 	</header>
 	
 	<nav class="mui-bar mui-bar-tab">
@@ -76,6 +76,9 @@
 				return false;
 			}
 			
+			// 对网络连接进行事件监听
+			netChangeSwitch();
+			
 			// 获取当前的webview对象
 			var indexWebView = plus.webview.currentWebview();
 			
@@ -110,6 +113,23 @@
 			// 延时加载
 			setTimeout("initData()", 1000);
 		});
+		
+		// 监听网络状态更改
+		function netChangeSwitch(){
+			document.addEventListener("netchange", function(){
+				// 网络状态获取和判断
+				var connectionStatus = plus.networkinfo.getCurrentType();
+				if (connectionStatus != 0 && connectionStatus != 1) {
+					// 重新打开网络连接
+					var mingm_title = document.getElementById("mingm_title");
+					mingm_title.innerHTML = "<b>明信</b>";
+				} else {
+					// 关闭网络连接
+					var mingm_title = document.getElementById("mingm_title");
+					mingm_title.innerHTML = "<b>慕信(未连接)</b>";
+				}
+			});
+		}
 		
 		//预加载
 		function initData() {

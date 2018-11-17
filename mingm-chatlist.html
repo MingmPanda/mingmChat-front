@@ -25,6 +25,7 @@
 		
 		<script src="js/mui.min.js"></script>
 		<script src="js/app.js"></script>
+		<script src="js/CHAT.js"></script>
 		<script type="text/javascript">
 			mui.init()
 			
@@ -39,11 +40,14 @@
 					loadingFriendRequests();
 				});
 				
-				// 添加自定义事件，刷新信息
+				// 添加自定义事件，刷新信息,初始化webSockect
 				window.addEventListener("refresh", function(){
 					loadingFriendRequests();
+					CHAT.init();
 				});
+//				CHAT.init();
 			});
+			
 			
 			// 加载好友请求记录列表
 			function loadingFriendRequests(){

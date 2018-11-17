@@ -172,6 +172,25 @@
 				
 				// 清空数组
 				clearContactArray();
+				
+				// 为好友通讯录批量绑定点击事件
+				mui("#contactList").on("tap", ".chat-with-friend", function(e){
+					var friendUserId = this.getAttribute("friendUserId");
+					var friendNickname = this.getAttribute("friendNickname");
+					var friendFaceImage = this.getAttribute("friendFaceImage");
+					
+					// 打开聊天子页面
+					mui.openWindow({
+						url: "chatting.html",
+						id: "chatting-" + friendUserId,	// 每个朋友的聊天页面都是唯一对应的
+						extras: {
+							friendUserId: friendUserId,
+							friendNickname: friendNickname,
+							friendFaceImage: friendFaceImage
+						}
+					});
+					
+				})
 			}
 			
 			// 获取后端所有好友列表

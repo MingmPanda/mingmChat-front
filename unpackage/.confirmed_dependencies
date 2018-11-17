@@ -48,5 +48,10 @@
 		"refer": [
 			"searchFriendsResult.html"
 		]
+	},
+	"mingm-contact.html": {
+		"refer": [
+			"chatting.html"
+		]
 	}
 }
