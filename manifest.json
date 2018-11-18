@@ -193,6 +193,13 @@
 					"chatting.html"
 				],
 				"priority": 0
+			},
+			"mingm-chatlist.html": {
+				"resources": [],
+				"refer": [
+					"chatting.html"
+				],
+				"priority": 0
 			}
 		},
 		"idle": {

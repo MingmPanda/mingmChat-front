@@ -11,6 +11,26 @@
 			body {
 				height: 100%;
 			}
+			
+			.mui-content {
+				height: 100%;
+				overflow: auto;
+			}
+			
+			.red-point{
+	          position: relative;
+	        }
+	
+	        .red-point::before{
+	          content: " ";
+	          border: 5px solid #C9394A;/*设置红色*/
+	          border-radius:5px;/*设置圆角*/
+	          position: absolute;
+	          z-index: 3000;
+	          right: 0%;
+	          margin-right: -10px;
+	          margin-top: 0px;
+	        }
 		</style>
 	</head>
 
@@ -19,6 +39,21 @@
 		<div class="mui-content">
 			<ul class="mui-table-view" id="ul_friend_request_list" style="margin-bottom: 10px;">
 				
+			</ul>
+			
+			<ul id="ul_chatSnapshot" class="mui-table-view">
+				
+				<!--<li class="mui-table-view-cell mui-media">
+					<div class="mui-slider-right mui-disabled">
+						<a class="mui-btn mui-btn-red">删除</a>
+					</div>
+		            <div class="mui-slider-handle mui-media-body">
+			            <img class="mui-media-object mui-pull-left" src="image/face-default-cat.png"/>
+			            	<span class="red-point">测试</span>
+			            <p class="mui-ellipsis">这里是聊天内容...</p>
+		            </div>
+			    </li>-->
+			    
 			</ul>
 			
 		</div>
@@ -46,6 +81,47 @@
 					CHAT.init();
 				});
 //				CHAT.init();
+
+			    // 为聊天快照列表量绑定点击事件
+				mui("#ul_chatSnapshot").on("tap", ".chat-with-friend", function(e){
+					var friendUserId = this.getAttribute("friendUserId");
+					var friendNickname = this.getAttribute("friendNickname");
+					var friendFaceImage = this.getAttribute("friendFaceImage");
+					
+					// 打开聊天子页面
+					mui.openWindow({
+						url: "chatting.html",
+						id: "chatting-" + friendUserId,	// 每个朋友的聊天页面都是唯一对应的
+						extras: {
+							friendUserId: friendUserId,
+							friendNickname: friendNickname,
+							friendFaceImage: friendFaceImage
+						}
+					});
+					
+					var me = app.getUserGlobalInfo();
+					// 标记未读状态为已读
+					app.readUserChatSnapshot(me.id, friendUserId);
+					// 渲染快照列表进行展示
+					CHAT.loadingChatSnapshot();
+				});
+				
+				// 左滑删除聊天快照和记录
+				mui("#ul_chatSnapshot").on("tap", "#link_delChatRecord", function(e){
+					var me = this;	// a 标签
+					
+					// 获取朋友id
+					var friendUserId = me.getAttribute("friendUserId");
+					
+					// 1. 删除本地聊天记录
+					app.deleteUserChatHistory(user.id, friendUserId);
+					// 2. 删除本地聊天快照
+					app.deleteUserChatSnapshot(user.id, friendUserId);
+					// 3. 移除当前用户操作的dom节点
+					var li = me.parentNode.parentNode;	// 获取li标签
+					var ul_chatSnapshot = document.getElementById("ul_chatSnapshot");
+					ul_chatSnapshot.removeChild(li);	// 删除li标签
+				});
 			});
 			
 			
